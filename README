@@ -1,0 +1,8 @@
+dependencies:
+ouch nushell avbroot coreutils
+
+build env:
+nix develop
+
+run:
+just
