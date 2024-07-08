@@ -7,7 +7,8 @@ ota_file := "ota.zip"
 
 # MODIFY BELOW IF NEEDED
 
-ota_url := "https://dl.google.com/dl/android/aosp/cheetah-ota-ap2a.240605.024-feba1b34.zip"
+# get from https://developers.google.com/android/ota
+ota_url := "https://dl.google.com/dl/android/aosp/cheetah-ota-ap2a.240705.004-6c6f1111.zip"
 
 magisk_url := "https://github.com/topjohnwu/Magisk/releases/download/v27.0/Magisk-v27.0.apk"
 
