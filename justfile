@@ -8,11 +8,11 @@ ota_file := "ota.zip"
 # MODIFY BELOW IF NEEDED
 
 # get from https://developers.google.com/android/ota
-ota_url := "https://dl.google.com/dl/android/aosp/cheetah-ota-ap2a.240705.004-6c6f1111.zip"
+ota_url := "https://dl.google.com/dl/android/aosp/shiba-ota-ap2a.240805.005.d1-3cde38bd.zip"
 
 magisk_url := "https://github.com/topjohnwu/Magisk/releases/download/v27.0/Magisk-v27.0.apk"
 
-ksu_anykernel_url := "https://github.com/tiann/KernelSU/releases/download/v1.0.0/AnyKernel3-android13-5.10.189_2023-11.zip"
+ksu_anykernel_url := "https://github.com/tiann/KernelSU/releases/download/v1.0.1/AnyKernel3-android14-5.15.148_2024-05.zip"
 
 secret_root := "~/Sec"
 
