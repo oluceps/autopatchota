@@ -22,7 +22,7 @@ secret_root := "~/Sec"
 default:
     @just --choose
 
-start-from-exist-ota-zip: get-magisk-tool get-anykernel-ksu-kernel extract-ota-zip repack-kernel repack-kernel patch
+start-from-exist-ota-zip: get-magisk-tool get-anykernel-ksu-kernel extract-ota-zip repack-kernel patch
 
 start: get-latest-update start-from-exist-ota-zip
 
