@@ -3772,11 +3772,11 @@
         "tg-online-keeper": "tg-online-keeper"
       },
       "locked": {
-        "lastModified": 1729031210,
-        "narHash": "sha256-qNnwfF97wm7fDdj0jyBGNmrJsOi+8AG9A65eiJYMKr8=",
+        "lastModified": 1729033000,
+        "narHash": "sha256-AM4yc5KgCts3ZARNzNhOCG3Xbv/cbfyhKZyyDCv/xok=",
         "owner": "oluceps",
         "repo": "nixos-config",
-        "rev": "85764db5519cb039e055ee3c585404745b1cd750",
+        "rev": "79c4921100fd5093ee86aa9cb2a97df7f2527403",
         "type": "github"
       },
       "original": {
