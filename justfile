@@ -10,9 +10,9 @@ ota_file := "ota.zip"
 # get from https://developers.google.com/android/ota
 ota_url := "https://dl.google.com/dl/android/aosp/shiba-ota-ap2a.240805.005.d1-3cde38bd.zip"
 
-magisk_url := "https://github.com/topjohnwu/Magisk/releases/download/v28.1/Magisk-v28.1.apk"
+magisk_url := "https://github.com/topjohnwu/Magisk/releases/download/canary-28102/app-release.apk"
 
-ksu_anykernel_url := "https://github.com/tiann/KernelSU/releases/download/v1.0.2/AnyKernel3-android14-5.15.148_2024-05.zip"
+ksu_anykernel_url := "https://github.com/tiann/KernelSU/releases/download/v1.0.3/AnyKernel3-android14-6.1.99_2024-10.zip"
 
 secret_root := "~/Sec"
 
