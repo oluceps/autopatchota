@@ -10,9 +10,9 @@ ota_file := "ota.zip"
 # get from https://developers.google.com/android/ota
 ota_url := "https://dl.google.com/dl/android/aosp/shiba-ota-ap2a.240805.005.d1-3cde38bd.zip"
 
-magisk_url := "https://github.com/topjohnwu/Magisk/releases/download/canary-28102/app-release.apk"
+magisk_url := "https://github.com/topjohnwu/Magisk/releases/download/v30.1/Magisk-v30.1.apk"
 
-ksu_anykernel_url := "https://github.com/tiann/KernelSU/releases/download/v1.0.3/AnyKernel3-android14-6.1.99_2024-10.zip"
+ksu_anykernel_url := "https://github.com/tiann/KernelSU/releases/download/v1.0.5/AnyKernel3-android14-6.1.99_2024-10.zip"
 
 secret_root := "~/Sec"
 
@@ -24,6 +24,16 @@ default:
 
 start-from-exist-ota-zip: get-magisk-tool get-anykernel-ksu-kernel extract-ota-zip repack-kernel patch
 
+start-from-exist-ota-zip-magisk:
+    #!/usr/bin/env nu
+    http get {{ magisk_url }} | save magisk.zip
+    (avbroot ota patch
+          --key-avb {{ secret_root }}/avb.key
+          --key-ota {{ secret_root }}/ota.key
+          --cert-ota {{ secret_root }}/ota.crt
+          --magisk ./magisk.zip
+          --magisk-preinit-device sda10
+          --input ./{{ ota_file }})
 start: get-latest-update start-from-exist-ota-zip
 
 get-latest-update:
@@ -67,7 +77,7 @@ patch:
           --prepatched build/new-boot.img
           --input ./{{ ota_file }})
 clean:
-    rm -rf build *.patched magisk*
+    rm -rf build *.patched magisk* extracted
 
 # Reboot to recovery mode. If the screen is stuck at a No command message, press the volume up button once while holding down the power button.
 sideload:
