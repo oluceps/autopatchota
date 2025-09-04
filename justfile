@@ -31,9 +31,10 @@ start-from-exist-ota-zip-magisk:
           --key-avb {{ secret_root }}/avb.key
           --key-ota {{ secret_root }}/ota.key
           --cert-ota {{ secret_root }}/ota.crt
-          --magisk ./magisk.zip
-          --magisk-preinit-device sda10
+          --rootless
           --input ./{{ ota_file }})
+          # --magisk ./magisk.zip
+          # --magisk-preinit-device sda10
 start: get-latest-update start-from-exist-ota-zip
 
 get-latest-update:
