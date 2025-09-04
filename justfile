@@ -53,8 +53,11 @@ get-magisk-tool:
 get-anykernel-ksu-kernel:
     #!/usr/bin/env nu
     http get {{ ksu_anykernel_url }} | save ksu.zip
-    mkdir build
+    just extract-anykernel-kernel
+
+extract-anykernel-kernel:
     ouch d ksu.zip
+    mkdir build
     mv ksu/Image build/
     rm ksu.zip ksu -r
 
@@ -83,3 +86,10 @@ clean:
 # Reboot to recovery mode. If the screen is stuck at a No command message, press the volume up button once while holding down the power button.
 sideload:
     adb sideload $"./{{ ota_file }}.patched"
+
+start-from-sukisu:
+    #!/usr/bin/env nu
+    just get-magisk-tool extract-anykernel-kernel extract-ota-zip
+    cd build
+    ./libmagiskboot.so repack boot.img
+    just patch
