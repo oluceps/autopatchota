@@ -24,6 +24,7 @@
                   nushell
                   ouch
                   avbroot
+                  lz4
                 ]
               );
             };

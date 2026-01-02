@@ -89,7 +89,24 @@ sideload:
 
 start-from-sukisu:
     #!/usr/bin/env nu
-    just get-magisk-tool extract-anykernel-kernel extract-ota-zip
+    just get-magisk-tool get-anykernel-ksu-kernel extract-ota-zip
     cd build
     ./libmagiskboot.so repack boot.img
     just patch
+
+# https://github.com/chenxiaolong/avbroot/issues/264
+[working-directory: 'build']
+ksu-lkm: get-magisk-tool extract-ota-zip 
+    #!/usr/bin/env nu
+    avbroot boot unpack -i boot.img
+    mv kernel.img kernel.img.lz4
+    lz4 -d kernel.img.lz4
+    mv libmagiskboot.so magiskboot
+    $env.PATH = ($env.PATH | prepend .)
+    ../ksud boot-patch -b init_boot.img --kmi "android14-6.1"
+    (avbroot ota patch
+          --key-avb {{ secret_root }}/avb.key
+          --key-ota {{ secret_root }}/ota.key
+          --cert-ota {{ secret_root }}/ota.crt
+          --prepatched (glob kernelsu_patched_*.img | first)
+          --input ../{{ ota_file }})
